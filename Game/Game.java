@@ -1,3 +1,5 @@
+package tarsis.game;
+
 /*
 * Written in memory of the owner of shoujoai.com,
 * who helped me realize I was gay.
@@ -10,7 +12,8 @@ public class Game{
 
 	public static void main(String[] args){
 
-		System.out.println("How old are ya?");
+		GameMap gm = new GameMap();
+		gm.look();
 
 		Reader r = new BufferedReader(new InputStreamReader(System.in));
    		StreamTokenizer st = new StreamTokenizer(r);
@@ -21,15 +24,17 @@ public class Game{
 
     			if(st.ttype == StreamTokenizer.TT_WORD) {
 				if(st.sval.equals("quit")){break;}
-        			System.out.println(st.sval);
+        			else if(st.sval.equals("look")){gm.look();}
+				else{gm.move(st.sval);}
+				
     			} else if(st.ttype == StreamTokenizer.TT_NUMBER) {
         			System.out.println(st.nval);
     			} else if(st.ttype == StreamTokenizer.TT_EOL) {
-        			System.out.println();
+        			System.out.println(":)");
     			}
 
 		}//end while
-		}catch(IOException e){System.out.println("You fucked up, kid.");}
+		}catch(IOException e){System.out.println("The I/O stream broke.");}
 
 		//st.close();
 
