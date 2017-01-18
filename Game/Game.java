@@ -2,7 +2,6 @@ package tarsis.game;
 
 /*
 * Written in memory of the owner of shoujoai.com,
-* who helped me realize I was gay.
 * Rest in Peace, stranger.
 */
 
@@ -24,8 +23,7 @@ public class Game{
 
     			if(st.ttype == StreamTokenizer.TT_WORD) {
 				if(st.sval.equals("quit")){break;}
-        			else if(st.sval.equals("look")){gm.look();}
-				else{gm.move(st.sval);}
+        			else{gm.act(st.sval);}
 				
     			} else if(st.ttype == StreamTokenizer.TT_NUMBER) {
         			System.out.println(st.nval);
