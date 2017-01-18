@@ -13,19 +13,29 @@ public class GameMap{
 		here.look();
 	}
 
-	public void move(String direction){
-		here = here.move(direction);
-		System.out.println(" ");
-		here.look();
+	public void act(String command){
+
+		if(command.equals("north") ||
+		   command.equals("south") ||
+		   command.equals("east") ||
+		   command.equals("west")){
+			here = here.move(command);
+			System.out.println(" ");
+			here.look();
+			System.out.println(" ");
+		}else if(command.equals("look")){
+			here.look();	
+		}else{ here.special(command);}
 	}
 
 	public GameMap(){
 
 		Room entrance = new Room("You are in a blank room. The walls are bare and white, without even a window. " + 
 		"The floors are linoleum, and the lighting is a pair of flourescent ceiling lights. There is one door on " + 
-		"the EAST wall. Around you, blank bodies appear like dolls. After a few minutes of staring into space, " + 
-		"they take on true shapes: clothing, faces, expressions. Once clothed, they walk through the door. To " + 
-		"walk with them, type east. To read this again, type look. To exit the game at any time, type quit. ");
+		"the EAST wall. The north wall has a small SIGN. Around you, blank bodies appear like dolls. After a few " +
+		"minutes of staring into space, they take on true shapes: clothing, faces, expressions. Once clothed, they " +
+		"walk through the door. To walk with them, type east. To read this again, type look. To exit the game at " +
+		"any time, type quit. ");
 
 		Room southVillage = new Room("You leave the blank room and enter a quaint island village. " + 
 		"The streets are more like wide sidewalks; there isn't enough room to drive a car. The buildings are small, " + 
@@ -36,6 +46,8 @@ public class GameMap{
 		entrance.connect("east", southVillage);
 		southVillage.connect("west", entrance);
 		here = entrance;
+
+		entrance.addItem("sign", "You read the sign. PROTIP: all commands are one word. Look for clues in the text. ;)");
 
 		Room centerVillage = new Room("The center of the village is a bustling plaza. A group of residents is chatting " + 
 		"next to a bulletein board. There are other groups of two or three, each woman more outlandish than the " + 
