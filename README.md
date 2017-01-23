@@ -15,10 +15,10 @@ To adjust code: download .java files and have at it. A .sh and .cmd should e ava
 
 Java to run, jdk to compile.
 
-Authors
+#Authors
 
 Tarsis Martins
 
-License
+#License
 
 Public Domain
